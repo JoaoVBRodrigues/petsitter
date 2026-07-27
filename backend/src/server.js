@@ -11,9 +11,20 @@ app.use(cors({
 
 app.use(express.json());
 
+const authRoutes = require('./modules/auth/auth.routes');
+const sitterProfilesRoutes = require('./modules/sitterProfiles/sitterProfiles.routes');
+const bookingsRoutes = require('./modules/bookings/bookings.routes');
+
+app.use('/auth', authRoutes);
+app.use('/sitter-profiles', sitterProfilesRoutes);
+app.use('/bookings', bookingsRoutes);
+
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
+
+const errorHandler = require('./middlewares/errorHandler');
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
