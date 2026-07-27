@@ -1,1 +1,21 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+  
+  --color-primary-500: #f59e0b;
+  --color-primary-600: #d97706;
+}
+
+@layer base {
+  body {
+    @apply bg-stone-50 text-stone-900 transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-stone-900 text-stone-100;
+  }
+}

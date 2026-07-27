@@ -1,58 +1,92 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { Dog, Loader2 } from 'lucide-react';
 
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loadingLocal, setLoadingLocal] = useState(false);
   
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoadingLocal(true);
+    setError('');
     try {
       await login(email, password);
-      navigate('/'); 
+      navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || 'Erro ao fazer login');
+      setError(err.response?.data?.message || 'Login falhou');
+      setLoadingLocal(false);
     }
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md w-96 flex flex-col gap-4">
-        <h2 className="text-2xl font-bold text-center">Login</h2>
+    <div className="min-h-screen flex flex-col bg-stone-50 dark:bg-stone-900">
+      <div className="absolute top-4 right-4"><ThemeToggle /></div>
+      <div className="flex-1 flex flex-col items-center justify-center p-4">
+        <div className="mb-8 flex flex-col items-center gap-3 text-primary-500">
+          <div className="bg-orange-100 dark:bg-orange-900/30 p-4 rounded-3xl">
+            <Dog size={40} />
+          </div>
+          <h1 className="text-3xl font-extrabold text-stone-800 dark:text-stone-100 tracking-tight">PetSitters</h1>
+        </div>
         
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-        
-        <input 
-          type="email" 
-          placeholder="E-mail" 
-          className="border p-2 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        
-        <input 
-          type="password" 
-          placeholder="Senha" 
-          className="border p-2 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded font-bold hover:bg-blue-700">
-          Entrar
-        </button>
+        <form onSubmit={handleLogin} className="bg-white dark:bg-stone-800 p-8 sm:p-10 rounded-[2rem] shadow-sm border border-stone-100 dark:border-stone-700 w-full max-w-md flex flex-col gap-5">
+          <div className="text-center mb-2">
+            <h2 className="text-2xl font-bold text-stone-800 dark:text-stone-100">Bem-vindo de volta</h2>
+            <p className="text-stone-500 dark:text-stone-400 text-sm mt-1">Entre com as suas credenciais</p>
+          </div>
+          
+          {error && (
+            <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-xl text-sm text-center font-medium border border-red-100 dark:border-red-900/30">
+              {error}
+            </div>
+          )}
+          
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-stone-700 dark:text-stone-300">E-mail</label>
+            <input 
+              type="email" 
+              placeholder="seu@email.com" 
+              className="border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-700 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all dark:text-stone-100"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-        <p className="text-sm text-center">
-          Não tem uma conta? <Link to="/register" className="text-blue-600">Cadastre-se</Link>
-        </p>
-      </form>
+          <div className="flex flex-col gap-1.5">
+            <label className="text-sm font-semibold text-stone-700 dark:text-stone-300">Senha</label>
+            <input 
+              type="password" 
+              placeholder="••••••••" 
+              className="border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-700 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all dark:text-stone-100"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          
+          <button 
+            type="submit" 
+            disabled={loadingLocal}
+            className="mt-2 bg-primary-500 hover:bg-primary-600 text-white p-3 rounded-xl font-bold transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
+          >
+            {loadingLocal && <Loader2 size={18} className="animate-spin" />}
+            Entrar
+          </button>
+
+          <p className="text-sm text-center text-stone-500 dark:text-stone-400 mt-2">
+            Não tem uma conta? <Link to="/register" className="text-primary-500 font-bold hover:underline">Cadastre-se</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }
