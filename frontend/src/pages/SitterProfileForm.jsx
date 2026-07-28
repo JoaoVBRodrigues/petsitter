@@ -37,7 +37,7 @@ export function SitterProfileForm() {
     setLoading(true);
     setMessage('');
     try {
-      await api.post('/sitter-profiles', {
+      await api.put('/sitter-profiles/me', {
         bio,
         pricePerHour: parseFloat(pricePerHour),
         availability,
