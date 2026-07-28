@@ -96,7 +96,7 @@ export function SitterSearch() {
                   <div className="flex flex-col gap-2 mb-6 text-sm">
                     <div className="flex items-center gap-2 text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-700/50 p-2 rounded-lg">
                       <DollarSign size={16} className="text-primary-500" />
-                      <span className="font-semibold">R$ {sitter.hourlyRate}/hora</span>
+                      <span className="font-semibold">R$ {sitter.pricePerHour}/hora</span>
                     </div>
                     <div className="flex items-center gap-2 text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-700/50 p-2 rounded-lg">
                       <Calendar size={16} className="text-emerald-500" />

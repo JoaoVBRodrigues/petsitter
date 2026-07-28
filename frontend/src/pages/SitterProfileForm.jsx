@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 export function SitterProfileForm() {
   const [bio, setBio] = useState('');
-  const [hourlyRate, setHourlyRate] = useState('');
+  const [pricePerHour, setPricePerHour] = useState('');
   const [availability, setAvailability] = useState('');
-  const [petPreferences, setPetPreferences] = useState('');
+  const [petTypes, setPetTypes] = useState('');
   const [loading, setLoading] = useState(false);
   const [fetchLoading, setFetchLoading] = useState(true);
   const [message, setMessage] = useState('');
@@ -19,9 +19,9 @@ export function SitterProfileForm() {
         const res = await api.get('/sitter-profiles/me');
         if (res.data) {
           setBio(res.data.bio || '');
-          setHourlyRate(res.data.hourlyRate || '');
+          setPricePerHour(res.data.pricePerHour || '');
           setAvailability(res.data.availability || '');
-          setPetPreferences(res.data.petPreferences || '');
+          setPetTypes(res.data.petTypes || '');
         }
       } catch (err) {
         console.error("Nenhum perfil encontrado", err);
@@ -39,9 +39,9 @@ export function SitterProfileForm() {
     try {
       await api.post('/sitter-profiles', {
         bio,
-        hourlyRate: parseFloat(hourlyRate),
+        pricePerHour: parseFloat(pricePerHour),
         availability,
-        petPreferences
+        petTypes
       });
       setMessage('Perfil salvo com sucesso!');
     } catch (err) {
@@ -94,8 +94,8 @@ export function SitterProfileForm() {
                       type="number" 
                       className="border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-700 p-3 pl-12 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-stone-100 transition-all w-full"
                       placeholder="35.00"
-                      value={hourlyRate}
-                      onChange={e => setHourlyRate(e.target.value)}
+                      value={pricePerHour}
+                      onChange={e => setPricePerHour(e.target.value)}
                       required
                     />
                   </div>
@@ -120,8 +120,8 @@ export function SitterProfileForm() {
                   type="text" 
                   className="border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-700 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-stone-100 transition-all"
                   placeholder="Ex: Cães pequenos, Gatos, Pássaros"
-                  value={petPreferences}
-                  onChange={e => setPetPreferences(e.target.value)}
+                  value={petTypes}
+                  onChange={e => setPetTypes(e.target.value)}
                 />
               </div>
 
