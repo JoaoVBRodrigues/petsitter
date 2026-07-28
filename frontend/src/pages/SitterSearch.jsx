@@ -9,6 +9,7 @@ export function SitterSearch() {
   const [loading, setLoading] = useState(true);
   const [bookingLoading, setBookingLoading] = useState(null);
   const [message, setMessage] = useState('');
+  const [selectedDates, setSelectedDates] = useState({});
 
   useEffect(() => {
     async function fetchSitters() {
@@ -25,13 +26,17 @@ export function SitterSearch() {
   }, []);
 
   const handleBook = async (sitterId) => {
-    const dates = prompt('Quais as datas do agendamento? (ex: 12/10 a 15/10)');
-    if (!dates) return;
+    const requestedDate = selectedDates[sitterId];
+    if (!requestedDate) {
+      alert('Por favor, selecione a data do agendamento.');
+      return;
+    }
     
     setBookingLoading(sitterId);
     try {
-      await api.post('/bookings', { sitterId, dates });
+      await api.post('/bookings', { sitterId, requestedDate });
       setMessage('Solicitação enviada com sucesso!');
+      setSelectedDates({ ...selectedDates, [sitterId]: '' });
     } catch (err) {
       alert('Erro ao enviar solicitação');
     } finally {
@@ -102,6 +107,16 @@ export function SitterSearch() {
                       <Calendar size={16} className="text-emerald-500" />
                       <span>{sitter.availability}</span>
                     </div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-1 mb-4">
+                    <label className="text-xs font-semibold text-stone-500 dark:text-stone-400">Data do Agendamento:</label>
+                    <input 
+                      type="date" 
+                      className="border border-stone-200 dark:border-stone-600 bg-stone-50 dark:bg-stone-700 p-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 dark:text-stone-100 transition-all text-sm w-full"
+                      value={selectedDates[sitter.userId] || ''}
+                      onChange={(e) => setSelectedDates({...selectedDates, [sitter.userId]: e.target.value})}
+                    />
                   </div>
                 </div>
                 

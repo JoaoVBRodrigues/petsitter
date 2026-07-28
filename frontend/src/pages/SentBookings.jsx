@@ -80,7 +80,7 @@ export function SentBookings() {
                   </div>
                   <div className="flex items-center gap-2 text-stone-500 dark:text-stone-400">
                     <Clock size={16} />
-                    <span>Datas: {b.dates}</span>
+                    <span>Data: {new Date(b.requestedDate).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</span>
                   </div>
                 </div>
                 <StatusBadge status={b.status} />

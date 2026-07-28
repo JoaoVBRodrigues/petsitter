@@ -92,7 +92,7 @@ export function ReceivedBookings() {
                   </div>
                   <div className="flex items-center gap-2 text-stone-600 dark:text-stone-300 bg-stone-50 dark:bg-stone-700/50 p-3 rounded-xl w-fit">
                     <Clock size={16} className="text-primary-500" />
-                    <span className="font-medium">Datas solicitadas: {b.dates}</span>
+                    <span className="font-medium">Data solicitada: {new Date(b.requestedDate).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</span>
                   </div>
                 </div>
                 
