@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 const StatusBadge = ({ status }) => {
   const styles = {
     PENDING: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800',
-    CONFIRMED: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800',
-    REJECTED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800'
+    ACCEPTED: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800',
+    DECLINED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800'
   };
 
   const labels = {
     PENDING: 'Pendente',
-    CONFIRMED: 'Aprovado',
-    REJECTED: 'Recusado'
+    ACCEPTED: 'Aprovado',
+    DECLINED: 'Recusado'
   };
 
   return (

@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom';
 const StatusBadge = ({ status }) => {
   const styles = {
     PENDING: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800',
-    CONFIRMED: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800',
-    REJECTED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800'
+    ACCEPTED: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800',
+    DECLINED: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border border-red-200 dark:border-red-800'
   };
 
   const labels = {
     PENDING: 'Pendente',
-    CONFIRMED: 'Aprovado',
-    REJECTED: 'Recusado'
+    ACCEPTED: 'Aprovado',
+    DECLINED: 'Recusado'
   };
 
   return (
@@ -99,14 +99,14 @@ export function ReceivedBookings() {
                 {b.status === 'PENDING' && (
                   <div className="flex gap-3 w-full md:w-auto mt-2 md:mt-0">
                     <button 
-                      onClick={() => handleUpdate(b.id, 'CONFIRMED')}
+                      onClick={() => handleUpdate(b.id, 'ACCEPTED')}
                       disabled={actionLoading === b.id}
                       className="flex-1 md:flex-none bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-xl font-bold transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
                     >
                       {actionLoading === b.id ? <Loader2 size={18} className="animate-spin" /> : <><Check size={18} /> Aceitar</>}
                     </button>
                     <button 
-                      onClick={() => handleUpdate(b.id, 'REJECTED')}
+                      onClick={() => handleUpdate(b.id, 'DECLINED')}
                       disabled={actionLoading === b.id}
                       className="flex-1 md:flex-none bg-red-100 hover:bg-red-200 text-red-600 dark:bg-red-900/30 dark:hover:bg-red-900/50 dark:text-red-400 px-5 py-2.5 rounded-xl font-bold transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
                     >
