@@ -2,8 +2,6 @@ node_modules/
 dist/
 build/
 .env
-docs
-docs/
 
 # Editor directories and files
 .vscode/

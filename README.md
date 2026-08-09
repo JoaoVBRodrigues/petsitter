@@ -22,14 +22,14 @@ O **PetSitters Connect** é uma aplicação Full-Stack projetada para facilitar 
 ### 🔐 Autenticação Segura e Registro
 Login e Registro blindados com JWT e encriptação de senhas (bcrypt). O sistema suporta registro de novos usuários de forma rápida e segura.
 <div align="center">
-  <img src="docs/images/login.png" width="45%" alt="Tela de Login" />
-  <img src="docs/images/register.png" width="45%" alt="Tela de Registro" />
+  <img src="./docs/images/login.png" width="45%" alt="Tela de Login" />
+  <img src="./docs/images/register.png" width="45%" alt="Tela de Registro" />
 </div>
 
 ### 🎨 Design Moderno e Busca (Home)
 Interface de alta qualidade com suporte a **Dark/Light Mode**, focada na fluidez e usabilidade. Os **Donos** podem buscar sitters, checar preferências de animais, ver os preços/hora e enviar solicitações de agendamento.
 <div align="center">
-  <img src="docs/images/home.png" width="90%" alt="Tela Home e Busca" />
+  <img src="./docs/images/home.png" width="90%" alt="Tela Home e Busca" />
 </div>
 
 ### 🐶 Dois Tipos de Usuários & Dashboard
