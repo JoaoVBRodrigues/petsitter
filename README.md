@@ -17,14 +17,25 @@ O **PetSitters Connect** é uma aplicação Full-Stack projetada para facilitar 
 
 ---
 
-## ✨ Funcionalidades Principais
+## ✨ Funcionalidades Principais (Em Ação)
 
-- 🔐 **Autenticação Segura:** Login e Registro blindados com JWT e encriptação de senhas (bcrypt).
-- 🎨 **Design Moderno e UX:** Interface de alta qualidade com suporte a **Dark/Light Mode**, focada na fluidez e usabilidade.
-- 🐶 **Dois Tipos de Usuários:**
-  - **Donos:** Podem buscar sitters, checar preferências de animais, ver os preços/hora e enviar solicitações de agendamento de forma simplificada.
-  - **Sitters:** Podem criar e editar seus perfis profissionais (bio, preferências, valor da hora, disponibilidade) e aceitar/recusar as propostas recebidas.
-- 📱 **Responsividade Total:** Adaptado perfeitamente para dispositivos móveis, tablets e desktops.
+### 🔐 Autenticação Segura e Registro
+Login e Registro blindados com JWT e encriptação de senhas (bcrypt). O sistema suporta registro de novos usuários de forma rápida e segura.
+<div align="center">
+  <img src="docs/images/login.png" width="45%" alt="Tela de Login" />
+  <img src="docs/images/register.png" width="45%" alt="Tela de Registro" />
+</div>
+
+### 🎨 Design Moderno e Busca (Home)
+Interface de alta qualidade com suporte a **Dark/Light Mode**, focada na fluidez e usabilidade. Os **Donos** podem buscar sitters, checar preferências de animais, ver os preços/hora e enviar solicitações de agendamento.
+<div align="center">
+  <img src="docs/images/home.png" width="90%" alt="Tela Home e Busca" />
+</div>
+
+### 🐶 Dois Tipos de Usuários & Dashboard
+- **Donos:** Buscam e contratam sitters de forma simplificada.
+- **Sitters:** Podem criar e editar seus perfis profissionais (bio, preferências, valor da hora, disponibilidade) e aceitar/recusar as propostas recebidas.
+*(Todas as telas adaptadas perfeitamente para dispositivos móveis, tablets e desktops).*
 
 ---
 

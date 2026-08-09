@@ -1,10 +1,11 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap');
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: 'Nunito', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
   
   --color-primary-500: #f59e0b;
   --color-primary-600: #d97706;
@@ -17,5 +18,18 @@
   
   .dark body {
     @apply bg-stone-900 text-stone-100;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  .dark .glass-panel {
+    @apply bg-stone-900/70 border-stone-700/30;
   }
 }
